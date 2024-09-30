@@ -19,13 +19,13 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore "JavaScript-based Client-side Inactivity Timer/JavaScript-based Client-side Inactivity Timer.csproj"  # Specify the correct project path
 
     - name: Build the application
-      run: dotnet build --configuration Release
+      run: dotnet build "JavaScript-based Client-side Inactivity Timer/JavaScript-based Client-side Inactivity Timer.csproj" --configuration Release  # Specify the correct project path
 
     - name: Publish the application
-      run: dotnet publish -c Release -o ./publish
+      run: dotnet publish "JavaScript-based Client-side Inactivity Timer/JavaScript-based Client-side Inactivity Timer.csproj" -c Release -o ./publish  # Specify the correct project path
 
     - name: Transfer Files to IIS Server
       uses: appleboy/scp-action@v0.1.0
