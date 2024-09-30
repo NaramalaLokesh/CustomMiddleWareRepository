@@ -19,13 +19,13 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore "JavaScript-based Client-side Inactivity Timer/JavaScript-based Client-side Inactivity Timer.csproj"  # Specify the correct project path
+      run: dotnet restore "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\Custom Middleware with ASP.NET Core Identity.sln"  # Use the solution file
 
     - name: Build the application
-      run: dotnet build "JavaScript-based Client-side Inactivity Timer/JavaScript-based Client-side Inactivity Timer.csproj" --configuration Release  # Specify the correct project path
+      run: dotnet build "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\Custom Middleware with ASP.NET Core Identity.sln" --configuration Release  # Use the solution file
 
     - name: Publish the application
-      run: dotnet publish "JavaScript-based Client-side Inactivity Timer/JavaScript-based Client-side Inactivity Timer.csproj" -c Release -o ./publish  # Specify the correct project path
+      run: dotnet publish "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\Custom Middleware with ASP.NET Core Identity.sln" -c Release -o ./publish  # Use the solution file
 
     - name: Transfer Files to IIS Server
       uses: appleboy/scp-action@v0.1.0
