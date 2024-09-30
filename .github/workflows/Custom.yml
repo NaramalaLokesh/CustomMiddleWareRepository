@@ -1,0 +1,41 @@
+name: Deploy Custom Middleware with ASP.NET Core Identity to IIS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET 8 SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build the application
+      run: dotnet build --configuration Release
+
+    - name: Publish the application
+      run: dotnet publish -c Release -o ./publish
+
+    - name: Transfer Files to IIS Server
+      uses: appleboy/scp-action@v0.1.0
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.iis-ssh-user }}
+        password: ${{ secrets.secureshell }}
+        source: ./publish/
+        target:  C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer JavaScript-based Client-side Inactivity Timer\bin\Release\net3.0\publish\Documents
+
+    - name: Restart IIS Server
+      run: |
+        ssh ${{ secrets.iis-ssh-user }}@${{ secrets.2401:4900:6219:6722:ac6c:5f91:628:9e38 }} "powershell.exe Restart-Service -Name 'W3SVC'"
