@@ -19,22 +19,22 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\JavaScript-based Client-side Inactivity Timer\bin\Release\net8.0\publish\Documents\CustomMiddleWareRepository"  # Use the solution file
+      run: dotnet restore "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\Custom Middleware with ASP.NET Core Identity.sln"  # Use the correct solution file
 
     - name: Build the application
-      run: dotnet build "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\JavaScript-based Client-side Inactivity Timer\bin\Release\net8.0\publish\Documents\CustomMiddleWareRepository" --configuration Release  # Use the solution file
+      run: dotnet build "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\Custom Middleware with ASP.NET Core Identity.sln" --configuration Release  # Use the correct solution file
 
     - name: Publish the application
-      run: dotnet publish "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\JavaScript-based Client-side Inactivity Timer\bin\Release\net8.0\publish\Documents\CustomMiddleWareRepository" -c Release -o ./publish  # Use the solution file
+      run: dotnet publish "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\Custom Middleware with ASP.NET Core Identity.sln" -c Release -o ./publish  # Use the correct solution file
 
     - name: Transfer Files to IIS Server
       uses: appleboy/scp-action@v0.1.0
       with:
-        host: ${{ secrets.SERVER_IP }}          # Use the secret for server IP
-        username: ${{ secrets.SSH_USER }}       # Ensure the secret name is correct
-        password: ${{ secrets.SSH_PASSWORD }}    # Ensure the secret name is correct
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
         source: ./publish/
-        target: C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\JavaScript-based Client-side Inactivity Timer\bin\Release\net8.0\publish\Documents\CustomMiddleWareRepository  # Update the target path as necessary
+        target: C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\JavaScript-based Client-side Inactivity Timer\bin\Release\net8.0\publish\Documents  # Update this path as necessary
 
     - name: Restart IIS Server
       run: |
