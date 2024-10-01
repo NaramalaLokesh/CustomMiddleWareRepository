@@ -20,15 +20,15 @@ jobs:
 
     # Restoring dependencies using relative path
     - name: Restore dependencies
-      run: dotnet restore "Custom Middleware with ASP.NET Core Identity.sln"  # Path relative to the repository root
+      run: dotnet restore "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\JavaScript-based Client-side Inactivity Timer\JavaScript.Web.csproj"  # Path relative to the repository root
 
     # Building the application using relative path
     - name: Build the application
-      run: dotnet build "Custom Middleware with ASP.NET Core Identity.sln" --configuration Release  # Path relative to the repository root
+      run: dotnet build "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\JavaScript-based Client-side Inactivity Timer\JavaScript.Web.csproj" --configuration Release  # Path relative to the repository root
 
     # Publishing the application using relative path
     - name: Publish the application
-      run: dotnet publish "Custom Middleware with ASP.NET Core Identity.sln" -c Release -o ./publish  # Path relative to the repository root
+      run: dotnet publish "C:\Users\naram\source\repos\JavaScript-based Client-side Inactivity Timer\JavaScript-based Client-side Inactivity Timer\JavaScript.Web.csproj" -c Release -o ./publish  # Path relative to the repository root
 
     # Transferring published files to IIS server
     - name: Transfer Files to IIS Server
